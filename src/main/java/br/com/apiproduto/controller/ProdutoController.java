@@ -26,11 +26,11 @@ public class ProdutoController {
     @PostMapping
     public ResponseEntity<Produto> salvar(Produto produto) {
         var novoProduto = produtoService.salvar(produto);
-        return new ResponseEntity(produto, HttpStatus.CREATED);
+        return new ResponseEntity<>(novoProduto,null, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable Long id) {
+    public ResponseEntity<Void> remover(@PathVariable Long id) {
         produtoService.delete(id);
         return ResponseEntity.ok().build();
     }
